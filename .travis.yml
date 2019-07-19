@@ -38,6 +38,7 @@ deploy:
     skip_cleanup: true
     draft: true
     on:
+      all_branches: true
       tags: false
       type: api
   - file_glob: true
