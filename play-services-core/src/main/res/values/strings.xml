@@ -145,6 +145,8 @@ This can take a couple of minutes."</string>
     <string name="pref_gcm_confirm_new_apps_title">Confirm new apps</string>
     <string name="pref_gcm_confirm_new_apps_summary">Ask before registering a new app to receive push notifications</string>
     <string name="pref_gcm_ping_interval">Ping interval: <xliff:g example="10 minutes">%1$s</xliff:g></string>
+    <string name="pref_gcm_server_addr_title">Server address</string>
+    <string name="pref_gcm_server_addr_summary">Leave blank for default</string>
 
     <string name="pref_about_title">About microG Services Core</string>
     <string name="pref_about_summary">Version information and used libraries</string>

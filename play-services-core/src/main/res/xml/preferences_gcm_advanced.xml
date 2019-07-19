@@ -22,6 +22,12 @@
         android:key="gcm_confirm_new_apps"
         android:summary="@string/pref_gcm_confirm_new_apps_summary"
         android:title="@string/pref_gcm_confirm_new_apps_title"/>
+  
+    <EditTextPreference
+        android:defaultValue=""
+        android:key="gcm_server_addr"
+        android:summary="@string/pref_gcm_server_addr_summary"
+        android:title="@string/pref_gcm_server_addr_title"/>
 
     <PreferenceCategory
         android:key="prefcat_networks"
