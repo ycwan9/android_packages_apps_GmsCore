@@ -397,9 +397,10 @@ public class McsService extends Service implements Handler.Callback {
                 return;
             }
 
+            String serverAddr = GcmPrefs.get(this).getServerAddr();
             logd("Starting MCS connection...");
-            Socket socket = new Socket(SERVICE_HOST, SERVICE_PORT);
-            logd("Connected to " + SERVICE_HOST + ":" + SERVICE_PORT);
+            Socket socket = new Socket(serverAddr, SERVICE_PORT);
+            logd("Connected to " + serverAddr + ":" + SERVICE_PORT);
             sslSocket = SSLContext.getDefault().getSocketFactory().createSocket(socket, SERVICE_HOST, SERVICE_PORT, true);
             logd("Activated SSL with " + SERVICE_HOST + ":" + SERVICE_PORT);
             inputStream = new McsInputStream(sslSocket.getInputStream(), rootHandler);
