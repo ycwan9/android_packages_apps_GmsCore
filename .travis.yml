@@ -1,8 +1,7 @@
 language: android
 sudo: false
 env:
-  - TERM=dumb
-  - JAVA_OPTS="-XX:+CMSClassUnloadingEnabled -XX:+HeapDumpOnOutOfMemoryError -Xmx2048m"
+  - TERM=dumb JAVA_OPTS="-XX:+CMSClassUnloadingEnabled -XX:+HeapDumpOnOutOfMemoryError -Xmx2048m"
 script:
   - jdk_switcher use oraclejdk8
   - echo sdk.dir $ANDROID_HOME > local.properties
@@ -15,3 +14,8 @@ android:
   - android-27
   - android-28
   - extra-android-m2repository
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+    - $HOME/.android/build-cache
