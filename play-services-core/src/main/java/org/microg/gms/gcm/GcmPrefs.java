@@ -27,12 +27,15 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static org.microg.gms.gcm.McsService.SERVICE_HOST;
+
 public class GcmPrefs implements SharedPreferences.OnSharedPreferenceChangeListener {
     public static final String PREF_HEARTBEAT = "gcm_heartbeat_interval";
     public static final String PREF_FULL_LOG = "gcm_full_log";
     public static final String PREF_LAST_PERSISTENT_ID = "gcm_last_persistent_id";
     public static final String PREF_CONFIRM_NEW_APPS = "gcm_confirm_new_apps";
     public static final String PREF_ENABLE_GCM = "gcm_enable_mcs_service";
+    public static final String PREF_SERVER_ADDR = "gcm_server_addr";
 
     public static final String PREF_NETWORK_MOBILE = "gcm_network_mobile";
     public static final String PREF_NETWORK_WIFI = "gcm_network_wifi";
@@ -58,6 +61,7 @@ public class GcmPrefs implements SharedPreferences.OnSharedPreferenceChangeListe
     private String lastPersistedId = "";
     private boolean confirmNewApps = false;
     private boolean gcmEnabled = false;
+    private String serverAddr = "";
 
     private int networkMobile = 0;
     private int networkWifi = 0;
@@ -84,6 +88,7 @@ public class GcmPrefs implements SharedPreferences.OnSharedPreferenceChangeListe
         lastPersistedId = defaultPreferences.getString(PREF_LAST_PERSISTENT_ID, "");
         confirmNewApps = defaultPreferences.getBoolean(PREF_CONFIRM_NEW_APPS, false);
         gcmEnabled = defaultPreferences.getBoolean(PREF_ENABLE_GCM, false);
+        serverAddr = defaultPreferences.getString(PREF_SERVER_ADDR, "");
 
         networkMobile = Integer.parseInt(defaultPreferences.getString(PREF_NETWORK_MOBILE, "0"));
         networkWifi = Integer.parseInt(defaultPreferences.getString(PREF_NETWORK_WIFI, "0"));
@@ -216,5 +221,12 @@ public class GcmPrefs implements SharedPreferences.OnSharedPreferenceChangeListe
     public void clearLastPersistedId() {
         lastPersistedId = "";
         defaultPreferences.edit().putString(PREF_LAST_PERSISTENT_ID, lastPersistedId).apply();
+    }
+    
+    public String getServerAddr() {
+        if (serverAddr.length() != 0) {
+            return serverAddr;
+        }
+        return SERVICE_HOST;
     }
 }
